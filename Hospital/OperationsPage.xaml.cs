@@ -27,6 +27,23 @@ namespace Hospital
             InitializeComponent();
             var currentOperation = HospitalEntities.GetContext().Operations.ToList();
             OperationsListView.ItemsSource = currentOperation;
+            OperationFilterCB.SelectedIndex = 0;
+            OperationSortCB.SelectedIndex = 0;
+        }
+
+        private void OperationSearchTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void OperationFilterCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void OperationSortCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

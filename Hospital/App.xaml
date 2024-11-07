@@ -8,5 +8,12 @@
             <Setter Property="FontFamily" Value="Century Gothic"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
         </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

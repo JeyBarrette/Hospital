@@ -10,9 +10,31 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView Name="OperationsListView" Grid.Row="0">
+
+        <WrapPanel Orientation="Horizontal" Grid.Row="0">
+            <StackPanel Orientation="Vertical" Margin="10" Grid.Column="0">
+                <TextBlock Text="Поиск " HorizontalAlignment="Center"></TextBlock>
+                <TextBox Name="OperationSearchTB" Width="300" Height="25" TextChanged="OperationSearchTB_TextChanged"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Grid.Column="1">
+                <ComboBox Name="OperationFilterCB" SelectionChanged="OperationFilterCB_SelectionChanged" Width="300" Margin="30,5">
+                    <TextBlock>без сортировки</TextBlock>
+                    <TextBlock>по убыванию даты</TextBlock>
+                    <TextBlock>по возрастанию даты</TextBlock>
+                </ComboBox>
+
+                <ComboBox Name="OperationSortCB" SelectionChanged="OperationSortCB_SelectionChanged" Width="300" Margin="0,5">
+                    <TextBlock>без фильтрации</TextBlock>
+                    <TextBlock>успешная операция</TextBlock>
+                    <TextBlock>неуспешная операция</TextBlock>
+                </ComboBox>
+            </StackPanel>
+        </WrapPanel>
+        
+        <ListView Name="OperationsListView" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
