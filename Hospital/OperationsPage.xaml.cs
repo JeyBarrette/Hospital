@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Hospital
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для OperationsPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OperationsPage : Page
     {
-        public MainWindow()
+        public OperationsPage()
         {
             InitializeComponent();
-            MainFrame.
         }
     }
 }

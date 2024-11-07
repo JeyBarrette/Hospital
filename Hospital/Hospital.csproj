@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +64,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Doctors.cs">
+      <DependentUpon>VetoshkinHospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalHistory.cs">
+      <DependentUpon>VetoshkinHospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Operations.cs">
+      <DependentUpon>VetoshkinHospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patients.cs">
+      <DependentUpon>VetoshkinHospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TreatmentSheet.cs">
+      <DependentUpon>VetoshkinHospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VetoshkinHospitalModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VetoshkinHospitalModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VetoshkinHospitalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VetoshkinHospitalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VetoshkinHospitalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VetoshkinHospitalModel.edmx</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +106,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OperationsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager.cs" />
+    <Compile Include="OperationsPage.xaml.cs">
+      <DependentUpon>OperationsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,13 +133,60 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="VetoshkinHospitalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VetoshkinHospitalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="VetoshkinHospitalModel.edmx.diagram">
+      <DependentUpon>VetoshkinHospitalModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\medicine_covid_corona_hospital_heh_icon_175576.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\medicine_covid_corona_hospital_heh_icon_175576.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OperationsPics\HumanHeart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OperationsPics\HumanBrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OperationsPics\HumanEye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OperationsPics\HumanEar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OperationsPics\HumanSpine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OperationsPics\HumanMouth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VetoshkinHospitalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VetoshkinHospitalModel.Context.cs</LastGenOutput>
+      <DependentUpon>VetoshkinHospitalModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="VetoshkinHospitalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VetoshkinHospitalModel.edmx</DependentUpon>
+      <LastGenOutput>VetoshkinHospitalModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
