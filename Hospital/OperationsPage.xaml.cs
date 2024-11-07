@@ -20,9 +20,13 @@ namespace Hospital
     /// </summary>
     public partial class OperationsPage : Page
     {
+        List<Operations> selectedOperation = new List<Operations>();
+
         public OperationsPage()
         {
             InitializeComponent();
+            var currentOperation = HospitalEntities.GetContext().Operations.ToList();
+            OperationsListView.ItemsSource = currentOperation;
         }
     }
 }

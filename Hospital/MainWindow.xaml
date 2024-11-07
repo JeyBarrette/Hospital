@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital"
         mc:Ignorable="d"
-        Title="VetoshkinHospital" Height="450" Width="800" Icon="Images/medicine_covid_corona_hospital_heh_icon_175576.ico" FontFamily="Century Gothic" MinHeight="450" MinWidth="800">
+        Title="VetoshkinHospital" Height="550" Width="900" Icon="Images/medicine_covid_corona_hospital_heh_icon_175576.ico" FontFamily="Century Gothic" MinHeight="550" MinWidth="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="90"></RowDefinition>
@@ -13,7 +13,7 @@
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <Frame Grid.Row="0" Background="#008080"/>
-        <Image Source="Images/medicine_covid_corona_hospital_heh_icon_175576.png" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Image Source="Images/medicine_covid_corona_hospital_heh_icon_175576.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
         <TextBlock Text="Hospital" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"/>
         <Frame Grid.Row="2" Background="#008080"/>

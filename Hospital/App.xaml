@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:Hospital"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

@@ -23,7 +23,8 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.
+            MainFrame.Navigate(new OperationsPage());
+            Manager.MainFrame = MainFrame;
         }
     }
 }
