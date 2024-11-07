@@ -29,21 +29,56 @@ namespace Hospital
             OperationsListView.ItemsSource = currentOperation;
             OperationFilterCB.SelectedIndex = 0;
             OperationSortCB.SelectedIndex = 0;
+            UpdateOperations();
+        }
+
+        private void UpdateOperations()
+        {
+            var currentOperation = HospitalEntities.GetContext().Operations.ToList();
+            currentOperation = currentOperation.Where(p => p.OperationDescription.ToLower().Contains(OperationSearchTB.Text.ToLower())).ToList();
+
+            if (OperationFilterCB.SelectedIndex == 0)
+            {
+
+            }
+            if (OperationFilterCB.SelectedIndex == 1)
+            {
+                currentOperation = currentOperation.OrderByDescending(p => p.OperationDate).ToList();
+            }
+            if (OperationFilterCB.SelectedIndex == 2)
+            {
+                currentOperation = currentOperation.OrderBy(p => p.OperationDate).ToList();
+            }
+
+            if (OperationSortCB.SelectedIndex == 0)
+            {
+
+            }
+            if (OperationSortCB.SelectedIndex == 1)
+            {
+                currentOperation = currentOperation.Where(p => p.OperationResult == "Успешно").ToList();
+            }
+            if (OperationSortCB.SelectedIndex == 2)
+            {
+                currentOperation = currentOperation.Where(p => p.OperationResult == "Неуспешно").ToList();
+            }
+
+            OperationsListView.ItemsSource = currentOperation;
         }
 
         private void OperationSearchTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            UpdateOperations();
         }
 
         private void OperationFilterCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            UpdateOperations();
         }
 
         private void OperationSortCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            UpdateOperations();
         }
     }
 }
