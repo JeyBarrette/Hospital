@@ -50,6 +50,7 @@ namespace Hospital
                 OperationIDTextBox.Visibility = Visibility.Hidden;
                 OperationResultBox.SelectedIndex = 0;
                 OperationDateDP.SelectedDate = DateTime.Today;
+                //PhotoImage.Source = BitmapFrame.Create(new Uri("/Hospital;component/Hospital/Images/picture.png", UriKind.Relative));
             }
             DataContext = currentOperation;
         }

@@ -22,8 +22,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="10,5,0,5" Width="auto">
-                <StackPanel Orientation="Vertical" Margin="5" Height="200">
-                    <TextBlock Text="Изображение" HorizontalAlignment="Center"></TextBlock>
+                <StackPanel Orientation="Vertical" Margin="10,0" Height="200">
+                    <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="5,-5">
+                        <TextBlock Text="Изображение" HorizontalAlignment="Center" FontWeight="Bold" FontSize="24"></TextBlock>
+                    </Border>
                     <Image Name="PhotoImage" Height="120" Width="120" Margin="5">
                         <Image.Source>
                             <Binding Path="PhotoPath">
@@ -112,6 +114,6 @@
                 </StackPanel>
             </StackPanel>
         </WrapPanel>
-        <Button Name="ClientSave" Content="Сохранить" Grid.Row="4" HorizontalAlignment="Center" Width="130" Margin="10" Click="ClientSave_Click"/>
+        <Button Name="ClientSave" Content="Сохранить" Grid.Row="4" HorizontalAlignment="Center" Width="150" Height="35" Margin="10" Click="ClientSave_Click"/>
     </Grid>
 </Page>
