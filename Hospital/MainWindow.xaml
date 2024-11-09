@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <Frame Grid.Row="0" Background="#008080"/>
         <Image Source="Images/medicine_covid_corona_hospital_heh_icon_175576.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Text="Hospital" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="Hospital" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
         <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"/>
         <Frame Grid.Row="2" Background="#008080"/>
     </Grid>

@@ -16,25 +16,42 @@
 
         <WrapPanel Orientation="Horizontal" Grid.Row="0">
             <StackPanel Orientation="Vertical" Margin="10" Grid.Column="0">
-                <TextBlock Text="Поиск " HorizontalAlignment="Center"></TextBlock>
-                <TextBox Name="OperationSearchTB" Width="300" Height="25" TextChanged="OperationSearchTB_TextChanged"></TextBox>
+                <TextBlock Text="Поиск по операции" HorizontalAlignment="Center"></TextBlock>
+                <TextBox Name="OperationSearchTB" Width="300" Height="25" TextChanged="OperationSearchTB_TextChanged" Margin="5"></TextBox>
+                <Button Name="AddOperationBTN" Content="Добавить операцию" Click="AddOperationBTN_Click" Width="250" Background="#00b060"></Button>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="10" Grid.Column="1">
-                <ComboBox Name="OperationFilterCB" SelectionChanged="OperationFilterCB_SelectionChanged" Width="300" Margin="30,5">
+                <ComboBox Name="OperationFilterCB" SelectionChanged="OperationFilterCB_SelectionChanged" Width="250" Margin="15,5">
                     <TextBlock>без сортировки</TextBlock>
                     <TextBlock>по убыванию даты</TextBlock>
                     <TextBlock>по возрастанию даты</TextBlock>
                 </ComboBox>
 
-                <ComboBox Name="OperationSortCB" SelectionChanged="OperationSortCB_SelectionChanged" Width="300" Margin="0,5">
+                <ComboBox Name="OperationSortCB" SelectionChanged="OperationSortCB_SelectionChanged" Width="250" Margin="0,5">
                     <TextBlock>без фильтрации</TextBlock>
                     <TextBlock>успешная операция</TextBlock>
                     <TextBlock>неуспешная операция</TextBlock>
                 </ComboBox>
             </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Операций выведено:"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Name="OperationsOverall"></TextBlock>
+                    <TextBlock Text=" из "></TextBlock>
+                    <TextBlock Name="OperationsOnScreen"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+
         </WrapPanel>
-        
+
         <ListView Name="OperationsListView" Grid.Row="1">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать запись" Click="MenuItem_EditClick"></MenuItem>
+                    <MenuItem Header="Удалить запись" Click="MenuItem_DelClick"></MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

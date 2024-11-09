@@ -20,12 +20,12 @@ namespace Hospital
     /// </summary>
     public partial class OperationsPage : Page
     {
-        List<Operations> selectedOperation = new List<Operations>();
+        //List<Operations> selectedOperation = new List<Operations>();
 
         public OperationsPage()
         {
             InitializeComponent();
-            var currentOperation = HospitalEntities.GetContext().Operations.ToList();
+            List<Operations> currentOperation = HospitalEntities.GetContext().Operations.ToList();
             OperationsListView.ItemsSource = currentOperation;
             OperationFilterCB.SelectedIndex = 0;
             OperationSortCB.SelectedIndex = 0;
@@ -63,6 +63,9 @@ namespace Hospital
                 currentOperation = currentOperation.Where(p => p.OperationResult == "Неуспешно").ToList();
             }
 
+            OperationsOverall.Text = HospitalEntities.GetContext().Operations.Count().ToString();
+            OperationsOnScreen.Text = currentOperation.Count().ToString();
+
             OperationsListView.ItemsSource = currentOperation;
         }
 
@@ -79,6 +82,21 @@ namespace Hospital
         private void OperationSortCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateOperations();
+        }
+
+        private void AddOperationBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_EditClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_DelClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

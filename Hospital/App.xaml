@@ -14,6 +14,12 @@
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="#00b64f"></Setter>
         </Style>
     </Application.Resources>
 </Application>
