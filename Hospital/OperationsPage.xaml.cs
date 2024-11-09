@@ -86,7 +86,8 @@ namespace Hospital
 
         private void AddOperationBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddOperationPage((sender as Button).DataContext as Operations));   
+            UpdateOperations();
         }
 
         private void MenuItem_EditClick(object sender, RoutedEventArgs e)

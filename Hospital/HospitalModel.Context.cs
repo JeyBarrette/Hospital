@@ -12,15 +12,14 @@ namespace Hospital
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Security.Policy;
-
+    
     public partial class HospitalEntities : DbContext
     {
         private static HospitalEntities _context;
 
         public static HospitalEntities GetContext()
         {
-            if ( _context == null )
+            if (_context == null)
                 _context = new HospitalEntities();
             return _context;
         }

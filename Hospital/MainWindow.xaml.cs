@@ -26,5 +26,22 @@ namespace Hospital
             MainFrame.Navigate(new OperationsPage());
             Manager.MainFrame = MainFrame;
         }
+
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                GoBackBTN.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                GoBackBTN.Visibility= Visibility.Hidden;
+            }
+        }
+
+        private void GoBackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
     }
 }

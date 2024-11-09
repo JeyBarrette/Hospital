@@ -10,9 +10,9 @@
             <PropertyRef Name="DoctorID" />
           </Key>
           <Property Name="DoctorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Patronymic" Type="nvarchar" MaxLength="20" />
+          <Property Name="DoctorSurname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DoctorFirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DoctorPatronymic" Type="nvarchar" MaxLength="20" />
           <Property Name="EmploymentDate" Type="date" Nullable="false" />
           <Property Name="Post" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ScientificTitle" Type="nvarchar" MaxLength="50" />
@@ -49,9 +49,9 @@
             <PropertyRef Name="PatientID" />
           </Key>
           <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Patronymic" Type="nvarchar" MaxLength="20" />
+          <Property Name="PatientSurname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PatientFirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PatientPatronymic" Type="nvarchar" MaxLength="20" />
           <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="City" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Gender" Type="nchar" MaxLength="1" Nullable="false" />
@@ -183,9 +183,9 @@
             <PropertyRef Name="DoctorID" />
           </Key>
           <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorSurname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorPatronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="EmploymentDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ScientificTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -231,9 +231,9 @@
             <PropertyRef Name="PatientID" />
           </Key>
           <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PatientSurname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatientFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatientPatronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
@@ -368,9 +368,9 @@
             <EntityTypeMapping TypeName="HospitalModel.Doctors">
               <MappingFragment StoreEntitySet="Doctors">
                 <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="DoctorSurname" ColumnName="DoctorSurname" />
+                <ScalarProperty Name="DoctorFirstName" ColumnName="DoctorFirstName" />
+                <ScalarProperty Name="DoctorPatronymic" ColumnName="DoctorPatronymic" />
                 <ScalarProperty Name="EmploymentDate" ColumnName="EmploymentDate" />
                 <ScalarProperty Name="Post" ColumnName="Post" />
                 <ScalarProperty Name="ScientificTitle" ColumnName="ScientificTitle" />
@@ -410,9 +410,9 @@
             <EntityTypeMapping TypeName="HospitalModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="PatientSurname" ColumnName="PatientSurname" />
+                <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
+                <ScalarProperty Name="PatientPatronymic" ColumnName="PatientPatronymic" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />

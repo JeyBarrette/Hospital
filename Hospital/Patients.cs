@@ -22,9 +22,9 @@ namespace Hospital
         }
     
         public int PatientID { get; set; }
-        public string Surname { get; set; }
-        public string FirstName { get; set; }
-        public string Patronymic { get; set; }
+        public string PatientSurname { get; set; }
+        public string PatientFirstName { get; set; }
+        public string PatientPatronymic { get; set; }
         public string Adress { get; set; }
         public string City { get; set; }
         public string Gender { get; set; }

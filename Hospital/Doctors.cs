@@ -22,9 +22,9 @@ namespace Hospital
         }
     
         public int DoctorID { get; set; }
-        public string Surname { get; set; }
-        public string FirstName { get; set; }
-        public string Patronymic { get; set; }
+        public string DoctorSurname { get; set; }
+        public string DoctorFirstName { get; set; }
+        public string DoctorPatronymic { get; set; }
         public System.DateTime EmploymentDate { get; set; }
         public string Post { get; set; }
         public string ScientificTitle { get; set; }

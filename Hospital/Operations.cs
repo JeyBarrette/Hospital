@@ -27,15 +27,18 @@ namespace Hospital
         public int PatientID { get; set; }
         public string OperationResult { get; set; }
         public string OperationImage { get; set; }
-        public string Surname { get; set; }
-        public string FirstName { get; set; }
-        public string Patronymic { get; set; }
+        public string PatientSurname { get; set; }
+        public string PatientFirstName { get; set; }
+        public string PatientPatronymic { get; set; }
+        public string DoctorSurname { get; set; }
+        public string DoctorFirstName { get; set; }
+        public string DoctorPatronymic { get; set; }
 
         public string DoctorFIO
         {
             get
             {
-                return Doctors.Surname + " " + Doctors.FirstName + " " + Doctors.Patronymic;
+                return Doctors.DoctorSurname + " " + Doctors.DoctorFirstName + " " + Doctors.DoctorPatronymic;
             }
         }
 
@@ -43,7 +46,7 @@ namespace Hospital
         {
             get
             {
-                return Patients.Surname + " " + Patients.FirstName + " " + Patients.Patronymic;
+                return Patients.PatientSurname + " " + Patients.PatientFirstName + " " + Patients.PatientPatronymic;
             }
         }
 
