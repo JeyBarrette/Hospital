@@ -24,7 +24,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="10,5,0,5" Width="auto">
                 <StackPanel Orientation="Vertical" Margin="5" Height="200">
                     <TextBlock Text="Изображение" HorizontalAlignment="Center"></TextBlock>
-                    <Image Name="PhotoImage" Stretch="UniformToFill" Height="120" Width="120" Margin="5">
+                    <Image Name="PhotoImage" Height="120" Width="120" Margin="5">
                         <Image.Source>
                             <Binding Path="PhotoPath">
                                 <Binding.TargetNullValue>
@@ -43,7 +43,7 @@
 
         <WrapPanel Orientation="Vertical" Grid.Row="0" Margin="5,0">
             <StackPanel Orientation="Vertical" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                <TextBlock Text="ID" Name="IDText" HorizontalAlignment="Center" Margin="20,0"></TextBlock>
+                <TextBlock Text="ID" Name="OperationIDTextBox" HorizontalAlignment="Center" Margin="20,0"></TextBlock>
             </StackPanel>
             <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="5,0">
                 <StackPanel Orientation="Horizontal" Margin="5,0">
@@ -101,11 +101,11 @@
             <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="5,5,5,5">
                 <StackPanel Orientation="Vertical" Margin="5">
                     <TextBlock Text="Дата операции" HorizontalAlignment="Center"></TextBlock>
-                    <DatePicker Name="OperationDate" Width="200"/>
+                    <DatePicker Name="OperationDateDP" Width="200" FontSize="20" FontFamily="Segoue UI"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Статус операции" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox Name="OperationStatusBox" Width="200">
+                    <TextBlock Text="Результат операции" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Name="OperationResultBox" Width="240">
                         <TextBlock>Успешно</TextBlock>
                         <TextBlock>Неуспешно</TextBlock>
                     </ComboBox>

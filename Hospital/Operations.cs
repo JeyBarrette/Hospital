@@ -11,7 +11,8 @@ namespace Hospital
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Operations
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -47,6 +48,22 @@ namespace Hospital
             get
             {
                 return Patients.PatientSurname + " " + Patients.PatientFirstName + " " + Patients.PatientPatronymic;
+            }
+        }
+
+        public string OperationDateString
+        {
+            get
+            {
+                return OperationDate.ToShortDateString();
+            }
+        }
+
+        public int OperationCount
+        {
+            get
+            {
+                return Convert.ToInt32(HospitalEntities.GetContext().MedicalHistory.Where(x => x.PatientID == this.OperationID).Count());
             }
         }
 

@@ -86,18 +86,34 @@ namespace Hospital
 
         private void AddOperationBTN_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddOperationPage((sender as Button).DataContext as Operations));   
+            Manager.MainFrame.Navigate(new AddOperationPage(null));
             UpdateOperations();
         }
 
         private void MenuItem_EditClick(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddOperationPage((sender as Button).DataContext as Operations));
+            UpdateOperations();
         }
 
         private void MenuItem_DelClick(object sender, RoutedEventArgs e)
         {
+            var currentClient = (sender as Button).DataContext as Operations;
 
+            if (currentClient.OperationCount == 0)
+            {
+                if (MessageBox.Show("Вы точно хотите выполнить удаление?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    HospitalEntities.GetContext().Operations.Remove(currentClient);
+                    HospitalEntities.GetContext().SaveChanges();
+                    OperationsListView.ItemsSource = HospitalEntities.GetContext().Operations.ToList();
+                    UpdateOperations();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Невозможно выполнить удаление, так как данная операция есть в истории болезни пациента!");
+            }
         }
     }
 }
