@@ -92,13 +92,13 @@ namespace Hospital
 
         private void MenuItem_EditClick(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddOperationPage((sender as Button).DataContext as Operations));
+            Manager.MainFrame.Navigate(new AddOperationPage((sender as MenuItem).DataContext as Operations));
             UpdateOperations();
         }
 
         private void MenuItem_DelClick(object sender, RoutedEventArgs e)
         {
-            var currentClient = (sender as Button).DataContext as Operations;
+            var currentClient = (sender as MenuItem).DataContext as Operations;
 
             if (currentClient.OperationCount == 0)
             {

@@ -50,6 +50,7 @@ namespace Hospital
                 OperationIDTextBox.Visibility = Visibility.Hidden;
                 OperationResultBox.SelectedIndex = 0;
                 OperationDateDP.SelectedDate = DateTime.Today;
+                currentOperation = new Operations(); 
                 //PhotoImage.Source = BitmapFrame.Create(new Uri("/Hospital;component/Hospital/Images/picture.png", UriKind.Relative));
             }
             DataContext = currentOperation;
@@ -244,6 +245,7 @@ namespace Hospital
             && p.PatientSurname == currentOperation.PatientSurname && p.PatientFirstName == currentOperation.PatientFirstName && p.PatientPatronymic == currentOperation.PatientPatronymic
             && p.DoctorSurname == currentOperation.DoctorSurname && p.DoctorFirstName == currentOperation.DoctorFirstName && p.DoctorPatronymic == currentOperation.DoctorPatronymic 
             && p.OperationResult == currentOperation.OperationResult).ToList();
+            Console.WriteLine(allOperation);
             if (allOperation.Count == 0 || check == true)
             {
                 if (check == false)

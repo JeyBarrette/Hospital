@@ -28,7 +28,7 @@
                     </Border>
                     <Image Name="PhotoImage" Height="120" Width="120" Margin="5">
                         <Image.Source>
-                            <Binding Path="PhotoPath">
+                            <Binding Path="PhotoImage">
                                 <Binding.TargetNullValue>
                                     <ImageSource>
                                         Images/picture.png

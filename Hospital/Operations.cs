@@ -67,6 +67,8 @@ namespace Hospital
             }
         }
 
+        //if (Anvarov_master_polEntities.GetContext().Partner_Product.Where(p => p.Partner == ID_Partner).Count() > 0)
+
         public virtual Doctors Doctors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicalHistory> MedicalHistory { get; set; }
