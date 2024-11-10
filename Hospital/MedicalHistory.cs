@@ -28,7 +28,14 @@ namespace Hospital
         public System.DateTime DateOfCure { get; set; }
         public string TreatmentType { get; set; }
         public int OperationID { get; set; }
-    
+        public string PatientSurname { get; set; }
+        public string PatientFirstName { get; set; }
+        public string PatientPatronymic { get; set; }
+        public string DoctorSurname { get; set; }
+        public string DoctorFirstName { get; set; }
+        public string DoctorPatronymic { get; set; }
+        public string currentPatient { get; set; }
+
         public virtual Doctors Doctors { get; set; }
         public virtual Operations Operations { get; set; }
         public virtual Patients Patients { get; set; }

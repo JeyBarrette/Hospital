@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hospital"
       mc:Ignorable="d" 
-      d:DesignHeight="670" d:DesignWidth="900"
+      d:DesignHeight="550" d:DesignWidth="900"
       Title="AddOperationPage">
 
     <Grid>
@@ -28,7 +28,7 @@
                     </Border>
                     <Image Name="PhotoImage" Height="120" Width="120" Margin="5">
                         <Image.Source>
-                            <Binding Path="PhotoImage">
+                            <Binding Path="OperationImage">
                                 <Binding.TargetNullValue>
                                     <ImageSource>
                                         Images/picture.png
@@ -49,43 +49,20 @@
             </StackPanel>
             <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="5,0">
                 <StackPanel Orientation="Horizontal" Margin="5,0">
-                    <TextBox Text="{Binding OperationID}" Name="OperationIDBox" Width="50" IsReadOnly="True" HorizontalAlignment="Left" Margin="0,0,5,5"/>
-                    <TextBlock Text="Информация о пациенте" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold" Margin="172,0"></TextBlock>
+                    <TextBox Text="{Binding OperationID}" Name="OperationIDBox" Width="50" IsReadOnly="True" HorizontalAlignment="Left" Margin="0,0,0,5"/>
+                    <TextBlock Text="Информация о пациенте" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold" Margin="20,0"></TextBlock>
+                    <TextBlock Text="Информация о докторе" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
                 </StackPanel>
             </Border>
             <StackPanel Orientation="Horizontal" Margin="5">
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Фамилия" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox Name="PatientLastNameBox" Text="{Binding PatientSurname}" TextChanged="PatientLastNameBox_TextChanged" Width="245"/>
+                <StackPanel Orientation="Vertical" Margin="10,0">
+                    <TextBlock Text="Пациенты" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Name="PatientsCBox" Text="{Binding PatientSurname}" Width="380"/>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Имя" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox Name="PatientFirstNameBox" Text="{Binding PatientFirstName}" TextChanged="PatientFirstNameBox_TextChanged" Width="245"/>
+                <StackPanel Orientation="Vertical" Margin="0,0">
+                    <TextBlock Text="Доктора" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Name="DoctorsCBox" Text="{Binding PatientFirstName}" Width="380"/>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Отчество" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox Name="PatientPatronymicBox" Text="{Binding PatientPatronymic}" TextChanged="PatientPatronymicBox_TextChanged" Width="245"/>
-                </StackPanel>
-            </StackPanel>
-        </WrapPanel>
-
-        <WrapPanel Orientation="Vertical" Grid.Row="1" Margin="5,0">
-            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="5,0">
-                <TextBlock Text="Информация о докторе" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
-            </Border>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Фамилия" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox Name="DoctorLastNameBox" Text="{Binding DoctorSurname}" TextChanged="DoctorLastNameBox_TextChanged" Width="245"/>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Имя" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox Name="DoctorFirstNameBox" Text="{Binding DoctorFirstName}" TextChanged="DoctorFirstNameBox_TextChanged" Width="245"/>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <TextBlock Text="Отчество" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox Name="DoctorPatronymicBox" Text="{Binding DoctorPatronymic}" TextChanged="DoctorPatronymicBox_TextChanged" Width="245"/>
-                </StackPanel> 
             </StackPanel>
         </WrapPanel>
 

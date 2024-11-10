@@ -34,6 +34,7 @@ namespace Hospital
         public string DoctorSurname { get; set; }
         public string DoctorFirstName { get; set; }
         public string DoctorPatronymic { get; set; }
+        public string currentPatient { get; set; }
 
         public string DoctorFIO
         {
@@ -63,11 +64,9 @@ namespace Hospital
         {
             get
             {
-                return Convert.ToInt32(HospitalEntities.GetContext().MedicalHistory.Where(x => x.PatientID == this.OperationID).Count());
+                return Convert.ToInt32(HospitalEntities.GetContext().MedicalHistory.Where(x => x.OperationID == OperationID).Count());
             }
         }
-
-        //if (Anvarov_master_polEntities.GetContext().Partner_Product.Where(p => p.Partner == ID_Partner).Count() > 0)
 
         public virtual Doctors Doctors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

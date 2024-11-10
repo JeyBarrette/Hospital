@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital"
         mc:Ignorable="d"
-        Title="VetoshkinHospital" Height="670" Width="900" Icon="Images/medicine_covid_corona_hospital_heh_icon_175576.ico" FontFamily="Century Gothic" MinHeight="670" MinWidth="900">
+        Title="VetoshkinHospital" Height="550" Width="900" Icon="Images/medicine_covid_corona_hospital_heh_icon_175576.ico" FontFamily="Century Gothic" MinHeight="550" MinWidth="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="90"></RowDefinition>

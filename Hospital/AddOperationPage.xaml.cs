@@ -28,13 +28,31 @@ namespace Hospital
 
         public AddOperationPage(Operations operation)
         {
-            InitializeComponent();
+            InitializeComponent();      
+
+            var currentPatient = HospitalEntities.GetContext().Patients.Select(p => (p.PatientSurname + " " + p.PatientFirstName + " " + p.PatientPatronymic)).ToList();
+            var currentDoctor = HospitalEntities.GetContext().Doctors.Select(p => p.DoctorSurname + " " + p.DoctorFirstName + " " + p.DoctorPatronymic).ToList();
+
+
+            foreach (var Patients in currentPatient)
+            {
+                PatientsCBox.Items.Add(Patients);
+            }
+
+            foreach (var Doctors in currentDoctor)
+            {   
+                DoctorsCBox.Items.Add(Doctors);
+            }
 
             if (operation != null)
             {
                 check = true;
-                currentOperation = operation;
+                currentOperation = operation;   
                 OperationDateDP.Text = currentOperation.OperationDate.ToString();
+                PatientsCBox.SelectedIndex = currentOperation.PatientID - 1;
+                DoctorsCBox.SelectedIndex = currentOperation.DoctorID - 1;
+                OperationDescriptionBox.Text = currentOperation.OperationDescription;
+
                 if (currentOperation.OperationResult == "Успешно")
                 {
                     OperationResultBox.SelectedIndex = 0;
@@ -43,6 +61,15 @@ namespace Hospital
                 {
                     OperationResultBox.SelectedIndex = 1;
                 }
+
+                Console.WriteLine(currentOperation.OperationID);
+                Console.WriteLine(DoctorsCBox.Text);
+                Console.WriteLine(PatientsCBox.Text);
+                Console.WriteLine(OperationDateDP.Text);
+                Console.WriteLine(OperationDescriptionBox.Text);
+                Console.WriteLine(OperationResultBox.Text);
+                Console.WriteLine(PatientsCBox.SelectedIndex.ToString());
+                Console.WriteLine(DoctorsCBox.SelectedIndex.ToString());
             }
             else
             {
@@ -50,81 +77,19 @@ namespace Hospital
                 OperationIDTextBox.Visibility = Visibility.Hidden;
                 OperationResultBox.SelectedIndex = 0;
                 OperationDateDP.SelectedDate = DateTime.Today;
-                currentOperation = new Operations(); 
+                //currentOperation = new Operations(); 
                 //PhotoImage.Source = BitmapFrame.Create(new Uri("/Hospital;component/Hospital/Images/picture.png", UriKind.Relative));
             }
-            DataContext = currentOperation;
+            DataContext = currentOperation; 
         }
 
-        private void PatientLastNameBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ChangePictureBtn_Click(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            string filteredText = new string(textBox.Text.Where(c => char.IsLetter(c) || c == ' ' || c == '-').ToArray());
-
-            if (filteredText != textBox.Text)
+            OpenFileDialog myOpenFileDialog = new OpenFileDialog();
+            if (myOpenFileDialog.ShowDialog() == true)
             {
-                textBox.Text = filteredText;
-                textBox.SelectionStart = filteredText.Length;
-            }
-        }
-
-        private void PatientFirstNameBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string filteredText = new string(textBox.Text.Where(c => char.IsLetter(c) || c == ' ' || c == '-').ToArray());
-
-            if (filteredText != textBox.Text)
-            {
-                textBox.Text = filteredText;
-                textBox.SelectionStart = filteredText.Length;
-            }
-        }
-
-        private void PatientPatronymicBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string filteredText = new string(textBox.Text.Where(c => char.IsLetter(c) || c == ' ' || c == '-').ToArray());
-
-            if (filteredText != textBox.Text)
-            {
-                textBox.Text = filteredText;
-                textBox.SelectionStart = filteredText.Length;
-            }
-        }
-
-        private void DoctorLastNameBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string filteredText = new string(textBox.Text.Where(c => char.IsLetter(c) || c == ' ' || c == '-').ToArray());
-
-            if (filteredText != textBox.Text)
-            {
-                textBox.Text = filteredText;
-                textBox.SelectionStart = filteredText.Length;
-            }
-        }
-
-        private void DoctorFirstNameBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string filteredText = new string(textBox.Text.Where(c => char.IsLetter(c) || c == ' ' || c == '-').ToArray());
-
-            if (filteredText != textBox.Text)
-            {
-                textBox.Text = filteredText;
-                textBox.SelectionStart = filteredText.Length;
-            }
-        }
-
-        private void DoctorPatronymicBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string filteredText = new string(textBox.Text.Where(c => char.IsLetter(c) || c == ' ' || c == '-').ToArray());
-
-            if (filteredText != textBox.Text)
-            {
-                textBox.Text = filteredText;
-                textBox.SelectionStart = filteredText.Length;
+                currentOperation.OperationImage = myOpenFileDialog.FileName;
+                PhotoImage.Source = new BitmapImage(new Uri(myOpenFileDialog.FileName));
             }
         }
 
@@ -140,95 +105,36 @@ namespace Hospital
             }
         }
 
-        private void ChangePictureBtn_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog myOpenFileDialog = new OpenFileDialog();
-            if (myOpenFileDialog.ShowDialog() == true)
-            {
-                currentOperation.OperationImage = myOpenFileDialog.FileName;
-                PhotoImage.Source = new BitmapImage(new Uri(myOpenFileDialog.FileName));
-            }
-        }
-
         private void ClientSave_Click(object sender, RoutedEventArgs e)
         {
-            if (currentOperation.OperationID == 0)
-            {
-                HospitalEntities.GetContext().Operations.Add(currentOperation);
-            }
-
             StringBuilder errors = new StringBuilder();
-            if (string.IsNullOrWhiteSpace(currentOperation.PatientSurname))
-                errors.AppendLine("Укажите фамилию пациента!");
-            else
-            {
-                if (currentOperation.PatientSurname.Length > 50)
-                    errors.AppendLine("Слишком длинная фамилия пациента!");
-            }
-
-            if (string.IsNullOrWhiteSpace(currentOperation.DoctorSurname))
-                errors.AppendLine("Укажите фамилию доктора!");
-            else
-            {
-                if (currentOperation.DoctorSurname.Length > 50)
-                    errors.AppendLine("Слишком длинная фамилия доктора!");
-            }
-
-
-            if (string.IsNullOrWhiteSpace(currentOperation.PatientFirstName))
-                errors.AppendLine("Укажите имя пациента!");
-            else
-            {
-                if (currentOperation.PatientFirstName.Length > 50)
-                    errors.AppendLine("Слишком длинное имя пациента!");
-            }
-
-            if (string.IsNullOrWhiteSpace(currentOperation.DoctorFirstName))
-                errors.AppendLine("Укажите имя доктора!");
-            else
-            {
-                if (currentOperation.DoctorFirstName.Length > 50)
-                    errors.AppendLine("Слишком длинное имя доктора!");
-            }
-
-
-            if (string.IsNullOrWhiteSpace(currentOperation.PatientPatronymic))
-                currentOperation.PatientPatronymic = null;
-            else
-            {
-                if (currentOperation.PatientPatronymic.Length > 50)
-                    errors.AppendLine("Слишком длинное отчество пациента!");
-            }
-
-            if (string.IsNullOrWhiteSpace(currentOperation.DoctorPatronymic))
-                currentOperation.DoctorPatronymic = null;
-            else
-            {
-                if (currentOperation.DoctorPatronymic.Length > 50)
-                    errors.AppendLine("Слишком длинное отчество пациента!");
-            }
-
-
             if (string.IsNullOrWhiteSpace(currentOperation.OperationDescription))
-                errors.AppendLine("Укажите описание операции!");
-            else
             {
-                if (currentOperation.OperationDescription.Length > 60)
-                    errors.AppendLine("Слишком длинное описание операции!");
+                errors.AppendLine("Укажите описание операции!");
+            }
+            else if (string.IsNullOrEmpty(currentOperation.OperationDescription.Trim()))
+            {
+                errors.AppendLine("Описание операции пустое или содержит только пробелы!");
+            }
+            else if (currentOperation.OperationDescription.Length > 60)
+            {
+                errors.AppendLine("Слишком длинное описание операции!");
             }
 
+            if (PatientsCBox.SelectedIndex == -1)
+            {
+                errors.AppendLine("Выберите пациента!");
+            }
+            if (DoctorsCBox.SelectedIndex == -1)
+            {
+                errors.AppendLine("Выберите доктора!");
+            }
 
-            //if (OperationDateDP.Text == "")
-            //{
-            //    errors.AppendLine("Укажите дату операции!");
-            //}
-            //if (errors.Length > 0)
-            //{
-            //    MessageBox.Show(errors.ToString());
-            //    return;
-            //}
-            //currentOperation.OperationDate = Convert.ToDateTime(OperationDateDP.Text);
-
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
 
             if (OperationResultBox.SelectedIndex == 0)
             {
@@ -240,19 +146,23 @@ namespace Hospital
             }
 
 
-            List<Operations> allOperation = HospitalEntities.GetContext().Operations.ToList();
-            allOperation = allOperation.Where(p => p.OperationDescription == currentOperation.OperationDescription && p.OperationDate == currentOperation.OperationDate 
-            && p.PatientSurname == currentOperation.PatientSurname && p.PatientFirstName == currentOperation.PatientFirstName && p.PatientPatronymic == currentOperation.PatientPatronymic
-            && p.DoctorSurname == currentOperation.DoctorSurname && p.DoctorFirstName == currentOperation.DoctorFirstName && p.DoctorPatronymic == currentOperation.DoctorPatronymic 
-            && p.OperationResult == currentOperation.OperationResult).ToList();
-            Console.WriteLine(allOperation);
+            currentOperation.PatientID = PatientsCBox.SelectedIndex + 1;
+            currentOperation.DoctorID = DoctorsCBox.SelectedIndex + 1;  
+            currentOperation.OperationDescription = OperationDescriptionBox.Text;
+            currentOperation.OperationDate = (DateTime)OperationDateDP.SelectedDate;
+
+            //currentOperation.currentPatient = PatientsCBox.SelectedItem.ToString();
+            //currentOperation.currentDoctor = DoctorsCBox.SelectedIndex.ToString();
+
+
+            var allOperation = HospitalEntities.GetContext().Operations.ToList();
+            allOperation = allOperation.Where(p => p.OperationDescription == currentOperation.OperationDescription).ToList();
+            allOperation = allOperation.Where(p => p.OperationDescription == currentOperation.OperationDescription 
+            && p.currentPatient == currentOperation.PatientID.ToString()).ToList();
+
             if (allOperation.Count == 0 || check == true)
             {
-                if (check == false)
-                {
-                    currentOperation.OperationDate = DateTime.Now;
-                }
-                if (currentOperation.OperationID == 0)
+                if (currentOperation.OperationID == 0)          
                 {
                     HospitalEntities.GetContext().Operations.Add(currentOperation);
                 }
@@ -260,6 +170,7 @@ namespace Hospital
                 {
                     HospitalEntities.GetContext().SaveChanges();
                     MessageBox.Show("Информация о проведенной операции сохранена.");
+                    Manager.MainFrame.GoBack();
                 }
                 catch (Exception ex)
                 {

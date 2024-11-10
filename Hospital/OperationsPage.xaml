@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hospital"
       mc:Ignorable="d" 
-      d:DesignHeight="670" d:DesignWidth="900"
-      Title="OperationsPage">
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="OperationsPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -46,15 +46,15 @@
         </WrapPanel>
 
         <ListView Name="OperationsListView" Grid.Row="1" VirtualizingPanel.ScrollUnit="Pixel">
-            <ListView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Редактировать запись" Click="MenuItem_EditClick"></MenuItem>
-                    <MenuItem Header="Удалить запись" Click="MenuItem_DelClick"></MenuItem>
-                </ContextMenu>
-            </ListView.ContextMenu>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>  
+                    <Grid>
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Редактировать запись" Click="MenuItem_EditClick"></MenuItem>
+                                <MenuItem Header="Удалить запись" Click="MenuItem_DelClick"></MenuItem>
+                            </ContextMenu>
+                        </Grid.ContextMenu>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition Width="600"></ColumnDefinition>

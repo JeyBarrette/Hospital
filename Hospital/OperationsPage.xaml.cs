@@ -20,7 +20,7 @@ namespace Hospital
     /// </summary>
     public partial class OperationsPage : Page
     {
-        //List<Operations> selectedOperation = new List<Operations>();
+        List<Operations> currentOperations = new List<Operations>();
 
         public OperationsPage()
         {
@@ -29,7 +29,7 @@ namespace Hospital
             OperationsListView.ItemsSource = currentOperation;
             OperationFilterCB.SelectedIndex = 0;
             OperationSortCB.SelectedIndex = 0;
-            UpdateOperations();
+            UpdateOperations(); 
         }
 
         private void UpdateOperations()
@@ -114,6 +114,12 @@ namespace Hospital
             {
                 MessageBox.Show("Невозможно выполнить удаление, так как данная операция есть в истории болезни пациента!");
             }
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var currentPartners = HospitalEntities.GetContext().Operations.ToList();
+            OperationsListView.ItemsSource = currentPartners;
         }
     }
 }
