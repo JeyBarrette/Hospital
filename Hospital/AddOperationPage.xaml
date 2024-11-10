@@ -57,11 +57,11 @@
             <StackPanel Orientation="Horizontal" Margin="5">
                 <StackPanel Orientation="Vertical" Margin="10,0">
                     <TextBlock Text="Пациенты" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox Name="PatientsCBox" Text="{Binding PatientSurname}" Width="380"/>
+                    <ComboBox Name="PatientsCBox" Width="380"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="0,0">
                     <TextBlock Text="Доктора" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox Name="DoctorsCBox" Text="{Binding PatientFirstName}" Width="380"/>
+                    <ComboBox Name="DoctorsCBox" Width="380"/>
                 </StackPanel>
             </StackPanel>
         </WrapPanel>

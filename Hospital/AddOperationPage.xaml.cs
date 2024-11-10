@@ -47,7 +47,7 @@ namespace Hospital
             if (operation != null)
             {
                 check = true;
-                currentOperation = operation;   
+                currentOperation = operation;
                 OperationDateDP.Text = currentOperation.OperationDate.ToString();
                 PatientsCBox.SelectedIndex = currentOperation.PatientID - 1;
                 DoctorsCBox.SelectedIndex = currentOperation.DoctorID - 1;
@@ -77,7 +77,7 @@ namespace Hospital
                 OperationIDTextBox.Visibility = Visibility.Hidden;
                 OperationResultBox.SelectedIndex = 0;
                 OperationDateDP.SelectedDate = DateTime.Today;
-                //currentOperation = new Operations(); 
+                //currentOperation = new Operations();  
                 //PhotoImage.Source = BitmapFrame.Create(new Uri("/Hospital;component/Hospital/Images/picture.png", UriKind.Relative));
             }
             DataContext = currentOperation; 
@@ -170,7 +170,6 @@ namespace Hospital
                 {
                     HospitalEntities.GetContext().SaveChanges();
                     MessageBox.Show("Информация о проведенной операции сохранена.");
-                    Manager.MainFrame.GoBack();
                 }
                 catch (Exception ex)
                 {
