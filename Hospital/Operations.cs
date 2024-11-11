@@ -72,5 +72,6 @@ namespace Hospital
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicalHistory> MedicalHistory { get; set; }
         public virtual Patients Patients { get; set; }
+        public object currentDoctor { get; internal set; }
     }
 }

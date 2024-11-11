@@ -39,7 +39,7 @@ namespace Hospital
 
             if (OperationFilterCB.SelectedIndex == 0)
             {
-
+                    
             }
             if (OperationFilterCB.SelectedIndex == 1)
             {

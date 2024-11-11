@@ -31,7 +31,7 @@ namespace Hospital
             InitializeComponent();      
 
             var currentPatient = HospitalEntities.GetContext().Patients.Select(p => (p.PatientSurname + " " + p.PatientFirstName + " " + p.PatientPatronymic)).ToList();
-            var currentDoctor = HospitalEntities.GetContext().Doctors.Select(p => p.DoctorSurname + " " + p.DoctorFirstName + " " + p.DoctorPatronymic).ToList();
+            var currentDoctor = HospitalEntities.GetContext().Doctors.Select(p => (p.DoctorSurname + " " + p.DoctorFirstName + " " + p.DoctorPatronymic)).ToList();
 
 
             foreach (var Patients in currentPatient)
@@ -156,9 +156,10 @@ namespace Hospital
 
 
             var allOperation = HospitalEntities.GetContext().Operations.ToList();
-            allOperation = allOperation.Where(p => p.OperationDescription == currentOperation.OperationDescription).ToList();
-            allOperation = allOperation.Where(p => p.OperationDescription == currentOperation.OperationDescription 
-            && p.currentPatient == currentOperation.PatientID.ToString()).ToList();
+            //allOperation = allOperation.Where(p => p.OperationDescription == currentOperation.OperationDescription).ToList();
+            allOperation = allOperation.Where(p => p.OperationDescription == currentOperation.OperationDescription
+            && p.currentPatient == currentOperation.currentPatient && p.currentDoctor == currentOperation.currentDoctor
+            && p.OperationDate == currentOperation.OperationDate).ToList();
 
             if (allOperation.Count == 0 || check == true)
             {
