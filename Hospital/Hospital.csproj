@@ -78,6 +78,7 @@
     <Compile Include="MedicalHistory.cs">
       <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OperationData.cs" />
     <Compile Include="Operations.cs">
       <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
